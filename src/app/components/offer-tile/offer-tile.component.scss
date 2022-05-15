@@ -1,0 +1,89 @@
+.offer-tile {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  width: 100%;
+  border: 1px solid #999999;
+  border-radius: 16px;
+  position: relative;
+
+  &.default {
+    background-color: #F3F3F3;
+    transition: 0.05s ease-out;
+
+    &.click-option:hover {
+      background-color: #E8FAED;
+      box-shadow: 0 0 10px #dcdcdc;
+    }
+  }
+
+  &.selected {
+    background-color: #E8FAED;
+  }
+
+  &.error {
+    border: 1px solid #C50000;
+    background-color: #FAE8E8;
+  }
+
+  .offer-image {
+    width: 40%;
+    background-color: orange;
+  }
+
+  .offer-info {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    margin-left: 5%;
+
+    & > * {
+      width: 100%;
+    }
+
+    .top-info {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.5rem;
+
+      & > * {
+        margin-bottom: 3px;
+      }
+
+      .title {
+        font-weight: bold;
+      }
+    }
+
+    .low-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .shop-logo {
+        background-color: #3dc84e;
+        width: 30%;
+        height: 20px;
+      }
+
+      .price {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .delete-offer {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjkiIGhlaWdodD0iMzEiIHZpZXdCb3g9IjAgMCAyOSAzMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMC41IiB5PSIwLjUiIHdpZHRoPSIyOCIgaGVpZ2h0PSIzMCIgcng9IjE0IiBmaWxsPSIjRUNFQ0VDIi8+CjxwYXRoIGQ9Ik0xOS41NjUzIDguMTk0MzNMMTQuNDM4MyAxMy42NzM2TDkuMzEyNTkgOC4xOTQzM0w3LjYwNCAxMC4wMjA3TDEyLjcyOTggMTUuNUw3LjYwNCAyMC45NzkyTDkuMzEyNTkgMjIuODA1N0wxNC40MzgzIDE3LjMyNjRMMTkuNTY1MyAyMi44MDU3TDIxLjI3MzkgMjAuOTc5MkwxNi4xNDgxIDE1LjVMMjEuMjczOSAxMC4wMjA3TDE5LjU2NTMgOC4xOTQzM1oiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjAuNSIgeT0iMC41IiB3aWR0aD0iMjgiIGhlaWdodD0iMzAiIHJ4PSIxNCIgc3Ryb2tlPSJibGFjayIvPgo8L3N2Zz4K") no-repeat;
+    $bg-size: 20px;
+    background-size: $bg-size $bg-size;
+    width: $bg-size;
+    height: $bg-size;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

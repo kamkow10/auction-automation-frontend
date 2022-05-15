@@ -1,0 +1,25 @@
+<div class="action-parameters-form" (change)="onParamsChanged()">
+  <div class="form-control">
+    <label for="price-change-time">Price change time</label>
+    <input type="datetime-local" id="price-change-time" [(ngModel)]="priceChangeTime">
+  </div>
+  <div class="form-control">
+    <div>New price</div>
+    <div class="check-input-container" style="margin-top: 1.5rem">
+      <input type="radio" name="price-change-kind" value="percentage" [(ngModel)]="priceChangeOption">
+      <div class="input-container">
+        <label for="price-percentage">Percent of current</label>
+        <input type="number" class="price-input" id="price-percentage" [(ngModel)]="newPricePercentage" [disabled]="priceChangeOption !== 'percentage'">
+      </div>
+      <div class="value-symbol">%</div>
+    </div>
+    <div class="check-input-container">
+      <input type="radio" name="price-change-kind" value="constant" [(ngModel)]="priceChangeOption">
+      <div class="input-container">
+        <label for="price-constant">Constant</label>
+        <input type="number" class="price-input" id="price-constant" [(ngModel)]="newPriceConstant" [disabled]="priceChangeOption !== 'constant'">
+      </div>
+      <div class="value-symbol">$</div>
+    </div>
+  </div>
+</div>

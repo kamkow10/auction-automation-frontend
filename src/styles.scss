@@ -1,1 +1,93 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  margin: 0;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+h2 {
+  padding-top: 0.5rem;
+  border-top: 1px solid gray;
+  margin-bottom: 1.5rem;
+}
+
+.section {
+  margin-bottom: 5rem;
+}
+
+.form-control {
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .check-input-container {
+    height: 70px;
+    display: flex;
+    align-items: center;
+
+    & > * {
+      margin-right: 0.5rem;
+    }
+
+    .input-container {
+      position: relative;
+
+      label {
+        position: absolute;
+        top: -24px;
+      }
+
+      input.price-input {
+        text-align: right;
+      }
+    }
+  }
+}
+
+input, select {
+  font-size: 1rem;
+  padding: 0.3rem 0.7rem;
+}
+
+.button-container {
+  margin-top: 1rem;
+}
+
+.btn {
+  background-color: #fff1d1;
+  padding: 0.3rem 1rem;
+  border: 1px solid #313131;
+  transition: 0.05s ease-out;
+  font-size: 1rem;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #fae6bb;
+  }
+
+  &:disabled, &:disabled:hover {
+    background-color: #d9cdb2;
+    border-color: rgba(16, 16, 16, 0.3);
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

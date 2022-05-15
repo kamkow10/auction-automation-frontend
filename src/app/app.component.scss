@@ -1,0 +1,16 @@
+.page-wrapper {
+  width: 100%;
+  background-color: #e1e9f1;
+  padding: 160px 50px 100px 50px;
+
+  .page-content-container {
+    width: 85%;
+    background-color: white;
+    margin: 0 auto;
+    padding: 3rem;
+    box-shadow: 0 0 20px #b7b7b7;
+    border-radius: 5px;
+
+    min-height: 1000px;
+  }
+}

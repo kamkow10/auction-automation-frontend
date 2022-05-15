@@ -1,0 +1,53 @@
+<div class="section">
+  <div class="offer-table">
+    <div class="offer-table-column">
+      <div class="header">Selected</div>
+      <div class="offers-container">
+        <div *ngIf="selectedOffers.length > 0; else noOfferSelectedInfo">
+          <app-offer-tile *ngFor="let offer of selectedOffers" [offer]="offer" [showDeleteButton]="true"
+                          tileStyle="selected" (onDelete)="onDeleteOffer($event)"></app-offer-tile>
+        </div>
+        <ng-template #noOfferSelectedInfo>
+          <div class="no-offer-selected-info">No offer is selected</div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="offer-table-column right-side">
+      <div class="header right-side">Search</div>
+      <div class="offers-container">
+        <form *ngIf="showFoundedOffers === false else results" [formGroup]="searchShopForm" (ngSubmit)="search()"
+              class="offer-search-form">
+          <div class="form-control">
+            <label for="shop">Shop</label>
+            <select formControlName="shop" name="shop" id="shop">
+              <option *ngFor="let shop of shops" [value]="shop.id">
+                {{shop.name}}
+              </option>
+            </select>
+          </div>
+          <div class="form-control">
+            <label for="time">Time period</label>
+            <div class="time-from-to" id="time">
+              <input type="date" formControlName="timeFrom">
+              <input type="date" formControlName="timeTo">
+            </div>
+          </div>
+          <div class="form-control">
+            <label for="title">Title</label>
+            <input type="text" formControlName="title" id="title">
+          </div>
+          <div class="button-container">
+            <button class="btn" type="submit" [disabled]="!title.value">Search</button>
+          </div>
+        </form>
+      </div>
+      <ng-template #results>
+        <div class="search-again-link">
+          <a href="#" (click)="showFoundedOffers = false">Search again</a>
+        </div>
+        <app-offer-tile (onClick)="onSelectOffer($event)" *ngFor="let offer of foundedOffers" [offer]="offer"
+                        [clickAvailabe]="true"></app-offer-tile>
+      </ng-template>
+    </div>
+  </div>
+</div>

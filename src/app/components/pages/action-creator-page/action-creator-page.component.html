@@ -1,0 +1,26 @@
+<h1>Action creator</h1>
+<h2>Select action type</h2>
+<div class="section">
+  <div class="form-control">
+    <label for="action-type">Action type</label>
+    <select name="action type" id="action-type" (change)="onActionTypeSet()" [(ngModel)]="selectedActionTypeId">
+      <optgroup *ngFor="let actionTypeCategory of actionTypeCategories" [label]="actionTypeCategory.name">
+        <option *ngFor="let actionType of actionTypeCategory.actionTypes" [value]="actionType.id">
+          {{actionType.name}}
+        </option>
+      </optgroup>
+    </select>
+  </div>
+</div>
+<h2>Choose offers</h2>
+<app-offer-select-panel (onOfferListChange)="onOfferListSet($event)"></app-offer-select-panel>
+<ng-container *ngIf="!!selectedActionTypeId">
+  <h2>Set parameters</h2>
+  <div class="section">
+    <app-action-parameters-form (onSetParams)="onParamsSet($event)" [actionTypeId]="selectedActionTypeId"></app-action-parameters-form>
+  </div>
+  <div class="button-container">
+    <button (click)="createAction()" class="btn" type="submit" [disabled]="submitButtonDisabled">Create action</button>
+  </div>
+</ng-container>
+

@@ -1,0 +1,4 @@
+<div class="form-container" [ngSwitch]="actionTypeId">
+  <app-price-change-form (onSetParams)="onParamsChanged($event)" *ngSwitchCase="ACTION_TYPES.CHANGE_PRICE"></app-price-change-form>
+  <app-fake-promotion-form *ngSwitchCase="ACTION_TYPES.FAKE_PROMOTION"></app-fake-promotion-form>
+</div>
