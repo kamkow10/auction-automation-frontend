@@ -1,0 +1,27 @@
+.shop-grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  &-element {
+    border: 1px solid #313131;
+    font-size: 2rem;
+    background-color: #F3F3F3;
+    transition: 0.05s ease-out;
+    margin: 0 1rem 1rem 0;
+    height: 160px;
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+
+    &.connected, &:hover {
+      background-color: #E8FAED;
+    }
+
+    &:hover:not(.connected) {
+      box-shadow: 0 0 10px #dcdcdc;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CustomActionParams} from "../../../models/custom-action-params";
 
 @Component({
@@ -7,6 +7,8 @@ import {CustomActionParams} from "../../../models/custom-action-params";
   styleUrls: ['./price-change-form.component.scss']
 })
 export class PriceChangeFormComponent implements OnInit {
+  @Input() params: any;
+  @Input() onlyDisplayMode = false;
   @Output() onSetParams = new EventEmitter<CustomActionParams>();
   public priceChangeOption: 'percentage' | 'constant' = 'percentage';
   public priceChangeTime: string;
@@ -16,8 +18,20 @@ export class PriceChangeFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(new Date().toISOString().slice(0, 16));
-    this.priceChangeTime = new Date().toISOString().slice(0, 16);
+    if (this.params) {
+      this.priceChangeTime = this.params.time;
+      this.priceChangeOption = this.params.percentage ? 'percentage' : 'constant';
+      switch (this.priceChangeOption) {
+        case "percentage":
+          this.newPricePercentage = this.params.newPrice;
+          break;
+        case "constant":
+          this.newPriceConstant = this.params.newPrice;
+          break;
+      }
+    } else {
+      this.priceChangeTime = new Date().toISOString().slice(0, 16);
+    }
   }
 
   public onParamsChanged(): void {

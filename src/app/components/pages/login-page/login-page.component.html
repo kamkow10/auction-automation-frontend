@@ -1,0 +1,36 @@
+<div class="page-wrapper login">
+  <div class="site-logo">AUCTION AUTOMATION</div>
+  <div class="login-panel-container">
+    <div class="page-content-container">
+      <div class="select-login-type">
+        <div class="option" [ngClass]="{'checked': loginOptionChecked}" (click)="loginOptionChecked = true">Login</div>
+        <div class="option" [ngClass]="{'checked': !loginOptionChecked}" (click)="loginOptionChecked = false">Register</div>
+      </div>
+      <div class="login-form" *ngIf="loginOptionChecked">
+        <div class="form-control">
+          <label for="loginEmail">Email</label>
+          <input type="text" id="loginEmail" [value]="loginEmail">
+        </div>
+        <div class="form-control">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" [value]="loginPassword">
+        </div>
+      </div>
+      <div class="register-form" *ngIf="!loginOptionChecked">
+        <div class="form-control">
+          <label for="registerEmail">Email</label>
+          <input type="text" id="registerEmail" [value]="registerEmail">
+        </div>
+        <div class="form-control">
+          <label for="registerPassword">Password</label>
+          <input type="password" id="registerPassword" [value]="registerPassword">
+        </div>
+        <div class="form-control">
+          <label for="registerRepeatPassword">Repeat password</label>
+          <input type="password" id="registerRepeatPassword" [value]="registerRepeatPassword">
+        </div>
+      </div>
+      <button class="btn" (click)="loginOptionChecked ? login() : register()">{{loginOptionChecked ? 'Login' : 'Register'}}</button>
+    </div>
+  </div>
+</div>

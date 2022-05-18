@@ -7,7 +7,6 @@ import {NavigationEnd, Router} from "@angular/router";
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  public isLoggedIn = false;
   public currentUrl: string;
 
   constructor(private router: Router) { }

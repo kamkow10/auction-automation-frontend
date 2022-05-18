@@ -5,21 +5,13 @@
       <div [ngClass]="{'active': currentUrl.includes('action-creator')}" routerLink="/action-creator"
            class="nav-menu-element">Action creator
       </div>
-      <div [ngClass]="{'active': currentUrl.includes('article-creator')}" routerLink="/action-creator"
+      <div [ngClass]="{'active': currentUrl.includes('your-actions')}" routerLink="/your-actions"
            class="nav-menu-element">Your actions
       </div>
       <div [ngClass]="{'active': currentUrl.includes('shops')}" routerLink="/shops"
            class="nav-menu-element">Shops
       </div>
-      <div *ngIf="!isLoggedIn" [ngClass]="{'active': currentUrl.includes('article-creator')}"
-           routerLink="/action-creator" class="nav-menu-element login">Login
-      </div>
-      <div *ngIf="!isLoggedIn" [ngClass]="{'active': currentUrl.includes('article-creator')}"
-           routerLink="/action-creator" class="nav-menu-element register">Register
-      </div>
-      <div *ngIf="isLoggedIn" [ngClass]="{'active': currentUrl.includes('article-creator')}"
-           routerLink="/action-creator" class="nav-menu-element logout">Logout
-      </div>
+      <div routerLink="/action-creator" class="nav-menu-element logout">Logout</div>
       <div class="nav-menu-element">User1234</div>
     </div>
   </div>

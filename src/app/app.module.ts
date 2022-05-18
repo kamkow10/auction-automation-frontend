@@ -13,6 +13,13 @@ import { OfferTileComponent } from './components/offer-tile/offer-tile.component
 import { ActionParametersFormComponent } from './components/action-parameters-form/action-parameters-form.component';
 import { PriceChangeFormComponent } from './components/action-parameters-form/price-change-form/price-change-form.component';
 import { FakePromotionFormComponent } from './components/action-parameters-form/fake-promotion-form/fake-promotion-form.component';
+import { ActionPageComponent } from './components/pages/action-page/action-page.component';
+import { ActionInfoActiveComponent } from './components/pages/action-page/action-info-active/action-info-active.component';
+import { ActionInfoDoneComponent } from './components/pages/action-page/action-info-done/action-info-done.component';
+import { ActionInfoFailedComponent } from './components/pages/action-page/action-info-failed/action-info-failed.component';
+import { ActionInfoPendingComponent } from './components/pages/action-page/action-info-pending/action-info-pending.component';
+import { ConnectShopPageComponent } from './components/pages/connect-shop-page/connect-shop-page.component';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +33,13 @@ import { FakePromotionFormComponent } from './components/action-parameters-form/
     ActionParametersFormComponent,
     PriceChangeFormComponent,
     FakePromotionFormComponent,
+    ActionPageComponent,
+    ActionInfoActiveComponent,
+    ActionInfoDoneComponent,
+    ActionInfoFailedComponent,
+    ActionInfoPendingComponent,
+    ConnectShopPageComponent,
+    LoginPageComponent,
   ],
     imports: [
         BrowserModule,

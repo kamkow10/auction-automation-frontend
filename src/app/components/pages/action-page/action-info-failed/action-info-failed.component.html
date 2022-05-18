@@ -1,0 +1,18 @@
+<h2>Offers selected for action</h2>
+<div class="section">
+  <div class="info-text error-info">
+    Action has status FAILED due to problems with accessing at least one of the selected offers:
+  </div>
+  <div *ngFor="let shopWithOffers of shopsWithOffers" class="info-text">
+    <div class="bold-text">{{shopWithOffers.shop.name}}</div>
+    <ul>
+      <li *ngFor="let offer of shopWithOffers.offers">ID: {{offer.id}}</li>
+    </ul>
+  </div>
+</div>
+<h2>Parameters</h2>
+<div class="section">
+  <app-action-parameters-form [onlyDisplayMode]="true"
+                              [actionTypeId]="action.actionType.id"
+                              [params]="action.params"></app-action-parameters-form>
+</div>

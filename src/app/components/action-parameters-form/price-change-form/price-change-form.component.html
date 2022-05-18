@@ -1,4 +1,4 @@
-<div class="action-parameters-form" (change)="onParamsChanged()">
+<div *ngIf="!onlyDisplayMode else onlyDisplay" class="action-parameters-form" (change)="onParamsChanged()">
   <div class="form-control">
     <label for="price-change-time">Price change time</label>
     <input type="datetime-local" id="price-change-time" [(ngModel)]="priceChangeTime">
@@ -23,3 +23,13 @@
     </div>
   </div>
 </div>
+<ng-template #onlyDisplay>
+  <div class="parameter">
+    <span class="parameter-name">Price change time: </span>
+    <span class="parameter-value">{{params.time}}</span>
+  </div>
+  <div class="parameter">
+    <span class="parameter-name">New price: </span>
+    <span class="parameter-value">{{params.newPrice}}{{params.percentage ? '%': '$'}}</span>
+  </div>
+</ng-template>

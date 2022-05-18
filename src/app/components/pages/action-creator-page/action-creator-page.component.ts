@@ -16,11 +16,10 @@ export class ActionCreatorPageComponent implements OnInit {
   public actionTypeCategories: ActionTypeCategory[];
   public submitButtonDisabled = true;
 
-
   constructor(private fb: FormBuilder) {
     this.actionTypeCategories = [
       {
-        name: 'Category 1',
+        name: 'Price manipulation',
         id: 1,
         actionTypes: [
           {name: 'Change price', id: 1},
@@ -46,13 +45,11 @@ export class ActionCreatorPageComponent implements OnInit {
   public onOfferListSet(offers: Offer[]): void {
     this.selectedOffers = offers;
     this.validate();
-
   }
 
   public onParamsSet(customActionParams: CustomActionParams): void {
     this.customActionParams = customActionParams;
     this.validate();
-
   }
 
   private validate(): void {

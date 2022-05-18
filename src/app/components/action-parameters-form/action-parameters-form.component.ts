@@ -9,6 +9,8 @@ import {CustomActionParams} from "../../models/custom-action-params";
 })
 export class ActionParametersFormComponent implements OnInit {
   @Input() actionTypeId: number;
+  @Input() params: any;
+  @Input() onlyDisplayMode = false;
   @Output() onSetParams = new EventEmitter<CustomActionParams>();
 
   public ACTION_TYPES = ACTION_TYPES;

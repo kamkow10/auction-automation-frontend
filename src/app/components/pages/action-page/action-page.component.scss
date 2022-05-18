@@ -1,0 +1,38 @@
+.action-header-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+
+  .main-info {
+    .action-id {
+      margin-bottom: 0.5rem;
+    }
+
+    .action-type {
+      font-size: 1.5rem;
+    }
+  }
+
+  .action-status {
+    padding: 1rem;
+    border-radius: 16px;
+    font-size: 2rem;
+    align-self: start;
+
+    &.active {
+      background-color: #DBFEC5;
+    }
+
+    &.done {
+      background-color: #c5fef3;
+    }
+
+    &.failed {
+      background-color: #fec5c5;
+    }
+
+    &.pending {
+      background-color: #fdfec5;
+    }
+  }
+}

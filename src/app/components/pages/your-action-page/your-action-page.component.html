@@ -1,1 +1,25 @@
-<p>your-action-page works!</p>
+<h1>Your actions</h1>
+<div class="section">
+  <table class="action-table">
+    <tr>
+      <th>Date created</th>
+      <th>ID</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Category</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let action of actions">
+      <td>{{action.creationDate}}</td>
+      <td>{{action.id}}</td>
+      <td>{{action.actionType.name}}</td>
+      <td>
+        <span class="action-status" [ngClass]="action.actionStatus | lowercase">{{action.actionStatus}}</span>
+      </td>
+      <td>{{action.actionTypeCategory.name}}</td>
+      <td>
+        <div class="link" routerLink="/action/{{action.id}}">Details</div>
+      </td>
+    </tr>
+  </table>
+</div>

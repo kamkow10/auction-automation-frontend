@@ -1,0 +1,15 @@
+<h2>Offers selected for action</h2>
+<div class="section">
+  <div *ngFor="let shopWithOffers of shopsWithOffers" class="info-element">
+    <div class="bold-text">{{shopWithOffers.shop.name}}</div>
+    <ul>
+      <li *ngFor="let offer of shopWithOffers.offers">ID: {{offer.id}}</li>
+    </ul>
+  </div>
+</div>
+<h2>Parameters</h2>
+<div class="section">
+  <app-action-parameters-form [onlyDisplayMode]="true"
+                              [actionTypeId]="action.actionType.id"
+                              [params]="action.params"></app-action-parameters-form>
+</div>

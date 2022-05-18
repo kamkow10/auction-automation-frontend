@@ -13,8 +13,10 @@
   </div>
 </div>
 <h2>Choose offers</h2>
-<app-offer-select-panel (onOfferListChange)="onOfferListSet($event)"></app-offer-select-panel>
-<ng-container *ngIf="!!selectedActionTypeId">
+<div class="section">
+  <app-offer-select-panel (onOfferListChange)="onOfferListSet($event)"></app-offer-select-panel>
+</div>
+<div class="section" *ngIf="!!selectedActionTypeId">
   <h2>Set parameters</h2>
   <div class="section">
     <app-action-parameters-form (onSetParams)="onParamsSet($event)" [actionTypeId]="selectedActionTypeId"></app-action-parameters-form>
@@ -22,5 +24,5 @@
   <div class="button-container">
     <button (click)="createAction()" class="btn" type="submit" [disabled]="submitButtonDisabled">Create action</button>
   </div>
-</ng-container>
+</div>
 

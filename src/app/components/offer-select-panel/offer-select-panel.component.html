@@ -43,7 +43,7 @@
       </div>
       <ng-template #results>
         <div class="search-again-link">
-          <a href="#" (click)="showFoundedOffers = false">Search again</a>
+          <div class="link" (click)="showFoundedOffers = false">Search again</div>
         </div>
         <app-offer-tile (onClick)="onSelectOffer($event)" *ngFor="let offer of foundedOffers" [offer]="offer"
                         [clickAvailabe]="true"></app-offer-tile>

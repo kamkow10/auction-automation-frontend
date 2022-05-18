@@ -1,1 +1,9 @@
-<p>shops-page works!</p>
+<h1>Shops</h1>
+<h2>Connected shops</h2>
+<div class="section shop-grid">
+  <div *ngFor="let connectedShop of connectedShops" class="shop-grid-element connected">{{connectedShop.name}}</div>
+</div>
+<h2>Connect more shops</h2>
+<div class="section shop-grid">
+  <div *ngFor="let notConnectedShop of notConnectedShops" class="shop-grid-element" routerLink="/shop/{{notConnectedShop.id}}">{{notConnectedShop.name}}</div>
+</div>

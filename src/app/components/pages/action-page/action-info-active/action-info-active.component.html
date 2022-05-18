@@ -1,0 +1,13 @@
+<h2>Offers selected for action</h2>
+<app-offer-select-panel [selectedOffers]="action.selectedOffers"
+                        (onOfferListChange)="onOfferListSet($event)"></app-offer-select-panel>
+<h2>Parameters</h2>
+<div class="section">
+  <app-action-parameters-form (onSetParams)="onParamsSet($event)"
+                              [actionTypeId]="action.actionType.id"
+                              [params]="action.params"></app-action-parameters-form>
+</div>
+<div class="button-container">
+  <button (click)="editAction()" class="btn" type="submit" [disabled]="submitButtonDisabled">Edit action</button>
+  <button (click)="deleteAction()" class="btn btn-delete" type="submit">Delete action</button>
+</div>
