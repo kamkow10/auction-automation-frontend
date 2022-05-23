@@ -1,4 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {UserData} from "../../../models/user-data";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-login-page',
@@ -6,7 +8,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-  @Output() onAuthFinished = new EventEmitter<any>();
+  @Output() onCorrectLogin = new EventEmitter<any>();
   public loginOptionChecked = true;
   public loginEmail = '';
   public loginPassword = '';
@@ -14,17 +16,26 @@ export class LoginPageComponent implements OnInit {
   public registerPassword = '';
   public registerRepeatPassword = '';
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
   public login(): void {
-    this.onAuthFinished.emit();
+    const loginData = new UserData(this.loginEmail, this.loginPassword);
+    this.userService.login(loginData).subscribe(response => {
+      if (response.token) {
+        localStorage.setItem('access-token', response.token);
+        this.onCorrectLogin.emit();
+      }
+    });
   }
 
   public register(): void {
-    this.onAuthFinished.emit();
+    const registerData = new UserData(this.registerEmail, this.registerPassword);
+    this.userService.register(registerData).subscribe(() => {
+      console.log('registered!')
+    });
   }
 
 }

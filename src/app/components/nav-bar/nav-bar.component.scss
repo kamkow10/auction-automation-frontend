@@ -43,16 +43,12 @@
           background-color: #fae6bb;
         }
 
-        &.login {
-          color: #c0c0ff;
-        }
-
-        &.register {
-          color: #ffdac0;
-        }
-
         &.logout {
           color: #ffc0c0;
+        }
+
+        &.user-email {
+          font-weight: bold;
         }
       }
     }

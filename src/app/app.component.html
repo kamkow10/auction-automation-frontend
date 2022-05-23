@@ -1,11 +1,13 @@
-<ng-container *ngIf="isUserLoggedIn else loginOrRegisterPanel">
-  <app-nav-bar></app-nav-bar>
-  <div class="page-wrapper">
-    <div class="page-content-container">
-      <router-outlet></router-outlet>
+<ng-container *ngIf="pageLoaded">
+  <ng-container *ngIf="isUserLoggedIn else loginOrRegisterPanel">
+    <app-nav-bar></app-nav-bar>
+    <div class="page-wrapper">
+      <div class="page-content-container">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #loginOrRegisterPanel>
+    <app-login-page (onCorrectLogin)="onCorrectLogin()"></app-login-page>
+  </ng-template>
 </ng-container>
-<ng-template #loginOrRegisterPanel>
-  <app-login-page (onAuthFinished)="onAuthFinished()"></app-login-page>
-</ng-template>

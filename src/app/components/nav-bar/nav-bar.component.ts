@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,14 +10,25 @@ import {NavigationEnd, Router} from "@angular/router";
 })
 export class NavBarComponent implements OnInit {
   public currentUrl: string;
+  public userEmail = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userEmail = this.userService.userData.email;
+    this.currentUrl = this.router.url;
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.currentUrl = this.router.url
       }
+    });
+  }
+
+  public logout(): void {
+    this.userService.logout().subscribe(() => {
+      localStorage.clear();
+      window.location.href = '';
     })
   }
 

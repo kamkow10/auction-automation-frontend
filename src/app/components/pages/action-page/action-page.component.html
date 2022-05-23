@@ -1,13 +1,15 @@
-<div class="action-header-container">
-  <div class="main-info">
-    <h1 class="action-id">Action #{{action.id}}</h1>
-    <div class="action-type">Type: {{action.actionType.name}}</div>
+<ng-container *ngIf="pageLoaded">
+  <div class="action-header-container">
+    <div class="main-info">
+      <h1 class="action-id">Action #{{action.id}}</h1>
+      <div class="action-type">Type: {{action.actionType.name}}</div>
+    </div>
+    <div class="action-status" [ngClass]="action.actionStatus | lowercase">{{action.actionStatus}}</div>
   </div>
-  <div class="action-status" [ngClass]="action.actionStatus | lowercase">{{action.actionStatus}}</div>
-</div>
-<div [ngSwitch]="action.actionStatus">
-  <app-action-info-active [action]="action" *ngSwitchCase="ACTION_STATUS.ACTIVE"></app-action-info-active>
-  <app-action-info-done [action]="action" *ngSwitchCase="ACTION_STATUS.DONE"></app-action-info-done>
-  <app-action-info-failed [action]="action" *ngSwitchCase="ACTION_STATUS.FAILED"></app-action-info-failed>
-  <app-action-info-pending [action]="action" *ngSwitchCase="ACTION_STATUS.PENDING"></app-action-info-pending>
-</div>
+  <div [ngSwitch]="action.actionStatus">
+    <app-action-info-active [action]="action" *ngSwitchCase="ACTION_STATUS.ACTIVE"></app-action-info-active>
+    <app-action-info-done [action]="action" *ngSwitchCase="ACTION_STATUS.DONE"></app-action-info-done>
+    <app-action-info-failed [action]="action" *ngSwitchCase="ACTION_STATUS.FAILED"></app-action-info-failed>
+    <app-action-info-pending [action]="action" *ngSwitchCase="ACTION_STATUS.PENDING"></app-action-info-pending>
+  </div>
+</ng-container>

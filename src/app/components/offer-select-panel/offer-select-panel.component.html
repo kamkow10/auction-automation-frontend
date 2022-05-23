@@ -19,18 +19,11 @@
               class="offer-search-form">
           <div class="form-control">
             <label for="shop">Shop</label>
-            <select formControlName="shop" name="shop" id="shop">
+            <select formControlName="shopId" name="shopId" id="shopId">
               <option *ngFor="let shop of shops" [value]="shop.id">
                 {{shop.name}}
               </option>
             </select>
-          </div>
-          <div class="form-control">
-            <label for="time">Time period</label>
-            <div class="time-from-to" id="time">
-              <input type="date" formControlName="timeFrom">
-              <input type="date" formControlName="timeTo">
-            </div>
           </div>
           <div class="form-control">
             <label for="title">Title</label>

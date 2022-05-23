@@ -23,7 +23,6 @@ export class ActionInfoFailedComponent implements OnInit {
     let shops: Shop[] = [];
     shops = offers.map(offer => offer.shop);
     let uniqueShops = [...new Map(shops.map(shop => [shop.id, shop])).values()];
-    console.log('unique shops:', uniqueShops)
     let result: {shop: Shop, offers: Offer[]}[] = [];
     uniqueShops.forEach(shop => {
       result.push({shop: shop, offers: []});

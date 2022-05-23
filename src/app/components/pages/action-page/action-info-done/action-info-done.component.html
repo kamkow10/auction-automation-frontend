@@ -3,7 +3,7 @@
   <div *ngFor="let shopWithOffers of shopsWithOffers" class="info-element">
     <div class="bold-text">{{shopWithOffers.shop.name}}</div>
     <ul>
-      <li *ngFor="let offer of shopWithOffers.offers">ID: {{offer.id}}</li>
+      <li *ngFor="let offer of shopWithOffers.offers">ID: {{offer.externalId}}</li>
     </ul>
   </div>
 </div>

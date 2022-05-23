@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {UserService} from "./services/user.service";
 
 @Component({
   selector: 'app-root',
@@ -7,16 +8,25 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
   public isUserLoggedIn = false;
+  public pageLoaded = false;
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
-  ngOnInit() {
-
+  async ngOnInit() {
+    await this.userService.getUserData().toPromise().then(userData => {
+      if (userData) {
+        this.userService.userData = userData;
+        this.pageLoaded = true;
+        this.isUserLoggedIn = true;
+      }
+    }, () => {
+      this.pageLoaded = true;
+    });
   }
 
-  public onAuthFinished(): void {
-    this.isUserLoggedIn = true;
+  public onCorrectLogin(): void {
+    this.ngOnInit();
   }
 
 }

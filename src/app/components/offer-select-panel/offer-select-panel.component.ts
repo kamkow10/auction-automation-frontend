@@ -3,6 +3,7 @@ import {Offer} from "../../models/offer";
 import {AbstractControl, FormBuilder, FormGroup} from "@angular/forms";
 import {Shop} from "../../models/shop";
 import {formatDate} from "@angular/common";
+import {ShopService} from "../../services/shop.service";
 
 @Component({
   selector: 'app-offer-select-panel',
@@ -15,55 +16,55 @@ export class OfferSelectPanelComponent implements OnInit {
   public foundedOffers: Offer[] = [];
   public showFoundedOffers = false;
   public searchShopForm: FormGroup;
-  public shops: Shop[] = [
-    {id: 1, logo: '', name: 'Allegro'},
-    {id: 1, logo: '', name: 'Ebay'}
-  ]
+  public shops: Shop[];
 
-  constructor(private fb: FormBuilder) {
-    this.searchShopForm = this.fb.group({
-      shop: [this.shops[0].id],
-      timeFrom: [formatDate(OfferSelectPanelComponent.getDateMonthsAgoFromNow(1), 'yyyy-MM-dd', 'en')],
-      timeTo: [formatDate(new Date(), 'yyyy-MM-dd', 'en')],
-      title: ['']
-    })
+  constructor(private fb: FormBuilder,
+              private shopService: ShopService) {
   }
 
   ngOnInit(): void {
+    this.searchShopForm = this.fb.group({
+      shopId: [],
+      title: ['']
+    });
+    this.shopService.getConnectedShops().subscribe(response => {
+      this.shops = response.shops;
+      if (this.shops.length > 0) {
+        this.shopId.setValue(this.shops[0].id);
+      }
+    })
   }
 
   get title(): AbstractControl {
     return this.searchShopForm.get('title');
   }
 
+  get shopId(): AbstractControl {
+    return this.searchShopForm.get('shopId');
+  }
+
   public search(): void {
-    this.showFoundedOffers = true;
-    const dummyFoundedOffers = [
-      {title: 'Tytuł', id: 1, amount: 50, price: 100, image: '', shop: {name: 'Allegro', logo: '', id: 1}},
-      {title: 'Tytuł', id: 2, amount: 50, price: 100, image: '', shop: {name: 'Allegro', logo: '', id: 1}},
-      {title: 'Tytuł', id: 3, amount: 50, price: 100, image: '', shop: {name: 'Allegro', logo: '', id: 1}},
-    ];
-    this.foundedOffers = dummyFoundedOffers.filter(offer => {
-      return !this.selectedOffers.some(selectedOffer => selectedOffer.id === offer.id && selectedOffer.shop.id === offer.shop.id);
-    });
+    this.shopService.findOffers(this.shopId.value, this.title.value).subscribe(response => {
+      this.foundedOffers = this.getNotSelectedOffers(response.offers);
+      this.showFoundedOffers = true;
+    })
   }
 
 
   public onSelectOffer(offer: Offer): void {
-    this.foundedOffers = this.foundedOffers.filter(foundedOffer => foundedOffer.id != offer.id);
+    this.foundedOffers = this.foundedOffers.filter(foundedOffer => foundedOffer.externalId != offer.externalId);
     this.selectedOffers.push(offer);
     this.onOfferListChange.emit(this.selectedOffers);
   }
 
   public onDeleteOffer(offer: Offer): void {
-    this.selectedOffers = this.selectedOffers.filter(selectedOffer => selectedOffer.id != offer.id);
+    this.selectedOffers = this.selectedOffers.filter(selectedOffer => selectedOffer.externalId != offer.externalId);
     this.onOfferListChange.emit(this.selectedOffers);
   }
 
-  private static getDateMonthsAgoFromNow(months: number): Date  {
-    const dateMonthsAgo = new Date();
-    dateMonthsAgo.setMonth(dateMonthsAgo.getMonth() - months);
-    return dateMonthsAgo;
+  private getNotSelectedOffers(offers: Offer[]): Offer[] {
+    return offers.filter(offer => {
+      return !this.selectedOffers.some(selectedOffer => selectedOffer.externalId === offer.externalId && selectedOffer.shop.id === offer.shop.id);
+    });
   }
-
 }

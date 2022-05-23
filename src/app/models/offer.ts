@@ -4,7 +4,7 @@ export class Offer {
   public title: string;
   public amount: number;
   public price: number;
-  public id: number;
+  public externalId: string;
   public shop: Shop;
   public image: string;
 }

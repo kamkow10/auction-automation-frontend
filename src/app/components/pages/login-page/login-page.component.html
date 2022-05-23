@@ -9,28 +9,28 @@
       <div class="login-form" *ngIf="loginOptionChecked">
         <div class="form-control">
           <label for="loginEmail">Email</label>
-          <input type="text" id="loginEmail" [value]="loginEmail">
+          <input type="text" id="loginEmail" [(ngModel)]="loginEmail">
         </div>
         <div class="form-control">
           <label for="loginPassword">Password</label>
-          <input type="password" id="loginPassword" [value]="loginPassword">
+          <input type="password" id="loginPassword" [(ngModel)]="loginPassword">
         </div>
       </div>
       <div class="register-form" *ngIf="!loginOptionChecked">
         <div class="form-control">
           <label for="registerEmail">Email</label>
-          <input type="text" id="registerEmail" [value]="registerEmail">
+          <input type="text" id="registerEmail" [(ngModel)]="registerEmail">
         </div>
         <div class="form-control">
           <label for="registerPassword">Password</label>
-          <input type="password" id="registerPassword" [value]="registerPassword">
+          <input type="password" id="registerPassword" [(ngModel)]="registerPassword">
         </div>
         <div class="form-control">
           <label for="registerRepeatPassword">Repeat password</label>
-          <input type="password" id="registerRepeatPassword" [value]="registerRepeatPassword">
+          <input type="password" id="registerRepeatPassword" [(ngModel)]="registerRepeatPassword">
         </div>
       </div>
-      <button class="btn" (click)="loginOptionChecked ? login() : register()">{{loginOptionChecked ? 'Login' : 'Register'}}</button>
+      <button class="btn" type="submit" (click)="loginOptionChecked ? login() : register()">{{loginOptionChecked ? 'Login' : 'Register'}}</button>
     </div>
   </div>
 </div>

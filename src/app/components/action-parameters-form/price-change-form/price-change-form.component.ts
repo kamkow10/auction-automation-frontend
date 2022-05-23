@@ -19,6 +19,7 @@ export class PriceChangeFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.params) {
+      this.params = JSON.parse(this.params);
       this.priceChangeTime = this.params.time;
       this.priceChangeOption = this.params.percentage ? 'percentage' : 'constant';
       switch (this.priceChangeOption) {
@@ -35,7 +36,6 @@ export class PriceChangeFormComponent implements OnInit {
   }
 
   public onParamsChanged(): void {
-    console.log(this.priceChangeTime)
     switch (this.priceChangeOption) {
       case "percentage":
         this.onSetParams.emit({

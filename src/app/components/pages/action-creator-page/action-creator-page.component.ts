@@ -3,6 +3,9 @@ import {ActionTypeCategory} from "../../../models/action-type-category";
 import {FormBuilder} from "@angular/forms";
 import {CustomActionParams} from "../../../models/custom-action-params";
 import {Offer} from "../../../models/offer";
+import {ActionService} from "../../../services/action.service";
+import {ActionCreationData} from "../../../models/action-creation-data";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-action-creator-page',
@@ -16,17 +19,12 @@ export class ActionCreatorPageComponent implements OnInit {
   public actionTypeCategories: ActionTypeCategory[];
   public submitButtonDisabled = true;
 
-  constructor(private fb: FormBuilder) {
-    this.actionTypeCategories = [
-      {
-        name: 'Price manipulation',
-        id: 1,
-        actionTypes: [
-          {name: 'Change price', id: 1},
-          {name: 'Fake promotion', id: 2}
-        ]
-      },
-    ]
+  constructor(private fb: FormBuilder,
+              private actionService: ActionService,
+              private router: Router) {
+    this.actionService.getActionTypeCategories().subscribe(response => {
+      this.actionTypeCategories = response.actionTypeCategories;
+    })
   }
 
   ngOnInit(): void {
@@ -34,7 +32,16 @@ export class ActionCreatorPageComponent implements OnInit {
   }
 
   public createAction(): void {
-    console.log('action creation')
+    const actionCreationData: ActionCreationData = {
+      actionTypeId: this.selectedActionTypeId,
+      params: JSON.stringify(this.customActionParams.params),
+      selectedOffers: this.selectedOffers.map(offer => {
+        return {external_offer_id: offer.externalId, shop: offer.shop.name}
+      })
+    }
+    this.actionService.createAction(actionCreationData).subscribe(response => {
+      this.router.navigateByUrl(`action/${response.action[0].id}`);
+    })
   }
 
   public onActionTypeSet(): void {

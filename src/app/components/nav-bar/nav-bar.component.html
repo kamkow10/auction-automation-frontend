@@ -11,8 +11,8 @@
       <div [ngClass]="{'active': currentUrl.includes('shops')}" routerLink="/shops"
            class="nav-menu-element">Shops
       </div>
-      <div routerLink="/action-creator" class="nav-menu-element logout">Logout</div>
-      <div class="nav-menu-element">User1234</div>
+      <div class="nav-menu-element logout" (click)="logout()">Logout</div>
+      <div class="nav-menu-element user-email">{{userEmail}}</div>
     </div>
   </div>
 </nav>
