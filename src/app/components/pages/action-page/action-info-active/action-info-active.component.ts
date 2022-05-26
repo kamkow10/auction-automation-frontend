@@ -32,7 +32,8 @@ export class ActionInfoActiveComponent implements OnInit {
       })
     }
     this.actionService.editAction(this.action.id, actionCreationData).subscribe(() => {
-      window.location.reload();
+      this.ngOnInit();
+      window.scroll({top: 0});
     })
   }
 

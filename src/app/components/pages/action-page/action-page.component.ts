@@ -22,6 +22,7 @@ export class ActionPageComponent implements OnInit {
     const actionId = this.route.snapshot.params.id;
     this.actionService.getAction(actionId).subscribe(response => {
       this.action = response.action;
+      this.action.params = JSON.parse(this.action.params);
       this.pageLoaded = true;
     })
   }

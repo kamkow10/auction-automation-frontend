@@ -1,0 +1,20 @@
+<div *ngIf="!onlyDisplayMode else onlyDisplay" class="action-parameters-form" (change)="onParamsChanged()">
+  <div class="form-control">
+    <label for="clone-time">Clone time</label>
+    <input type="datetime-local" id="clone-time" [(ngModel)]="cloneTime">
+  </div>
+  <div class="form-control">
+    <label for="clone-count">Clone count</label>
+    <input type="number" class="price-input" id="clone-count" [(ngModel)]="cloneCount">
+  </div>
+</div>
+<ng-template #onlyDisplay>
+  <div class="parameter">
+    <span class="parameter-name">Clone time: </span>
+    <span class="parameter-value">{{params.time}}</span>
+  </div>
+  <div class="parameter">
+    <span class="parameter-name">Clone count: </span>
+    <span class="parameter-value">{{params.count}}</span>
+  </div>
+</ng-template>

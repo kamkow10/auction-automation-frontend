@@ -1,0 +1,12 @@
+<div *ngIf="!onlyDisplayMode else onlyDisplay" class="action-parameters-form" (change)="onParamsChanged()">
+  <div class="form-control">
+    <label for="publish-time">Publish time</label>
+    <input type="datetime-local" id="publish-time" [(ngModel)]="publishTime">
+  </div>
+</div>
+<ng-template #onlyDisplay>
+  <div class="parameter">
+    <span class="parameter-name">Publish time: </span>
+    <span class="parameter-value">{{params.time}}</span>
+  </div>
+</ng-template>

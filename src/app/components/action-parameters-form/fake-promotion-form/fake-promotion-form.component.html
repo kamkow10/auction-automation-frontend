@@ -1,1 +1,36 @@
-<p>fake-promotion-form works!</p>
+<div *ngIf="!onlyDisplayMode else onlyDisplay" class="action-parameters-form" (change)="onParamsChanged()">
+  <div class="form-control">
+    <label for="price-increase-time"><strong>#1 Step: Price Increase</strong> - Time</label>
+    <input type="datetime-local" id="price-increase-time" [(ngModel)]="priceIncreaseTime">
+  </div>
+  <div class="form-control">
+    <label for="price-increase-percent"><strong>#1 Step: Price Increase</strong> - Percent of initial price</label>
+      <input type="number" class="price-input" id="price-increase-percent" [(ngModel)]="priceIncreasePercent">
+  </div>
+  <div class="form-control" style="margin-top: 2rem">
+    <label for="fake-promotion-time"><strong>#2 Step:</strong> Fake promotion - Time</label>
+    <input type="datetime-local" id="fake-promotion-time" [(ngModel)]="fakePromotionTime">
+  </div>
+  <div class="form-control">
+    <label for="fake-promotion-percent"><strong>#2 Step: Fake promotion</strong> - Percent of initial price</label>
+    <input type="number" class="price-input" id="fake-promotion-percent" [(ngModel)]="fakePromotionPercent">
+  </div>
+</div>
+<ng-template #onlyDisplay>
+  <div class="parameter">
+    <span class="parameter-name"><strong>#1 Step: Price Increase</strong> - Time: </span>
+    <span class="parameter-value">{{params.priceIncreaseTime}}</span>
+  </div>
+  <div class="parameter">
+    <span class="parameter-name"><strong>#1 Step: Price Increase</strong> - Percent of initial price: </span>
+    <span class="parameter-value">{{params.priceIncreasePercent}}</span>
+  </div>
+  <div class="parameter" style="margin-top: 2rem">
+    <span class="parameter-name"><strong>#2 Step: Fake promotion</strong> - Time: </span>
+    <span class="parameter-value">{{params.fakePromotionTime}}</span>
+  </div>
+  <div class="parameter">
+    <span class="parameter-name"><strong>#2 Step: Fake promotion</strong> - Percent of initial price: </span>
+    <span class="parameter-value">{{params.fakePromotionPercent}}</span>
+  </div>
+</ng-template>

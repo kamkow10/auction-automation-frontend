@@ -22,6 +22,11 @@ import {ConnectShopPageComponent} from './components/pages/connect-shop-page/con
 import {LoginPageComponent} from './components/pages/login-page/login-page.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import { ScheduleFormComponent } from './components/action-parameters-form/schedule-form/schedule-form.component';
+import { SchedulePublishingComponent } from './components/action-parameters-form/schedule-publishing/schedule-publishing.component';
+import { ScheduleUnpublishingComponent } from './components/action-parameters-form/schedule-unpublishing/schedule-unpublishing.component';
+import { CloneFormComponent } from './components/action-parameters-form/clone-form/clone-form.component';
+import { RenewFormComponent } from './components/action-parameters-form/renew-form/renew-form.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +47,11 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
     ActionInfoPendingComponent,
     ConnectShopPageComponent,
     LoginPageComponent,
+    ScheduleFormComponent,
+    SchedulePublishingComponent,
+    ScheduleUnpublishingComponent,
+    CloneFormComponent,
+    RenewFormComponent,
   ],
   imports: [
     BrowserModule,

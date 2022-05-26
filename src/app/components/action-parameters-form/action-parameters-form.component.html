@@ -1,5 +1,50 @@
 <div class="form-container" [ngSwitch]="actionTypeId">
-  <app-price-change-form [onlyDisplayMode]="onlyDisplayMode" [params]="params" (onSetParams)="onParamsChanged($event)"
-                         *ngSwitchCase="ACTION_TYPES.CHANGE_PRICE"></app-price-change-form>
-  <app-fake-promotion-form *ngSwitchCase="ACTION_TYPES.FAKE_PROMOTION"></app-fake-promotion-form>
+  <app-price-change-form
+    [onlyDisplayMode]="onlyDisplayMode"
+    [params]="params"
+    (onSetParams)="onParamsChanged($event)"
+    *ngSwitchCase="ACTION_TYPES.CHANGE_PRICE">
+  </app-price-change-form>
+
+  <app-fake-promotion-form
+    [onlyDisplayMode]="onlyDisplayMode"
+    [params]="params"
+    (onSetParams)="onParamsChanged($event)"
+    *ngSwitchCase="ACTION_TYPES.FAKE_PROMOTION">
+  </app-fake-promotion-form>
+
+  <app-schedule-form
+    [onlyDisplayMode]="onlyDisplayMode"
+    [params]="params"
+    (onSetParams)="onParamsChanged($event)"
+    *ngSwitchCase="ACTION_TYPES.SCHEDULE">
+  </app-schedule-form>
+
+  <app-schedule-publishing
+    [onlyDisplayMode]="onlyDisplayMode"
+    [params]="params"
+    (onSetParams)="onParamsChanged($event)"
+    *ngSwitchCase="ACTION_TYPES.SCHEDULE_PUBLISHING">
+  </app-schedule-publishing>
+
+  <app-schedule-unpublishing
+    [onlyDisplayMode]="onlyDisplayMode"
+    [params]="params"
+    (onSetParams)="onParamsChanged($event)"
+    *ngSwitchCase="ACTION_TYPES.SCHEDULE_OFFER_UNPUBLISHING">
+  </app-schedule-unpublishing>
+
+  <app-clone-form
+    [onlyDisplayMode]="onlyDisplayMode"
+    [params]="params"
+    (onSetParams)="onParamsChanged($event)"
+    *ngSwitchCase="ACTION_TYPES.CLONE">
+  </app-clone-form>
+
+  <app-renew-form
+    [onlyDisplayMode]="onlyDisplayMode"
+    [params]="params"
+    (onSetParams)="onParamsChanged($event)"
+    *ngSwitchCase="ACTION_TYPES.RENEW">
+  </app-renew-form>
 </div>

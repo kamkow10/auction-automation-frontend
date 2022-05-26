@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CustomActionParams} from "../../../models/custom-action-params";
+import {TimeService} from "../../../services/time.service";
 
 @Component({
   selector: 'app-price-change-form',
@@ -19,7 +20,6 @@ export class PriceChangeFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.params) {
-      this.params = JSON.parse(this.params);
       this.priceChangeTime = this.params.time;
       this.priceChangeOption = this.params.percentage ? 'percentage' : 'constant';
       switch (this.priceChangeOption) {
@@ -30,8 +30,11 @@ export class PriceChangeFormComponent implements OnInit {
           this.newPriceConstant = this.params.newPrice;
           break;
       }
+      if (this.onlyDisplayMode) {
+        this.params.priceChangeTime = TimeService.convertDatetimeToText(this.params.priceChangeTime);
+      }
     } else {
-      this.priceChangeTime = new Date().toISOString().slice(0, 16);
+      this.priceChangeTime = TimeService.getCurrentDatetime();
     }
   }
 
