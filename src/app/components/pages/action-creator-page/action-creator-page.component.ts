@@ -18,6 +18,7 @@ export class ActionCreatorPageComponent implements OnInit {
   public customActionParams: CustomActionParams;
   public actionTypeCategories: ActionTypeCategory[];
   public submitButtonDisabled = true;
+  public offerIdsWithCategoryError = [];
 
   constructor(private fb: FormBuilder,
               private actionService: ActionService,
@@ -41,6 +42,8 @@ export class ActionCreatorPageComponent implements OnInit {
     }
     this.actionService.createAction(actionCreationData).subscribe(response => {
       this.router.navigateByUrl(`action/${response.action[0].id}`);
+    }, error => {
+      this.offerIdsWithCategoryError = error.error.wrongOffers;
     })
   }
 

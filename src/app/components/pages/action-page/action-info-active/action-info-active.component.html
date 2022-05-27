@@ -1,6 +1,7 @@
 <h2>Offers selected for action</h2>
 <app-offer-select-panel [selectedOffers]="action.selectedOffers"
-                        (onOfferListChange)="onOfferListSet($event)"></app-offer-select-panel>
+                        (onOfferListChange)="onOfferListSet($event)"
+                        [offerIdsWithCategoryError]="offerIdsWithCategoryError"></app-offer-select-panel>
 <h2>Parameters</h2>
 <div class="section">
   <app-action-parameters-form (onSetParams)="onParamsSet($event)"

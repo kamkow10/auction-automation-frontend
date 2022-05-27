@@ -3,9 +3,14 @@
     <div class="offer-table-column">
       <div class="header">Selected</div>
       <div class="offers-container">
+        <div class="info-text" *ngIf="isAnySelectedOfferWithCategoryError()">
+          Offers marked in red are already selected for at least one of your actions which belongs to category
+          Scheduling. Before you can finish creating this action you have to first delete them.
+        </div>
         <div *ngIf="selectedOffers.length > 0; else noOfferSelectedInfo">
           <app-offer-tile *ngFor="let offer of selectedOffers" [offer]="offer" [showDeleteButton]="true"
-                          tileStyle="selected" (onDelete)="onDeleteOffer($event)"></app-offer-tile>
+                          [tileStyle]="offerIdsWithCategoryError.includes(offer.externalId) ? 'error' : 'selected'"
+                          (onDelete)="onDeleteOffer($event)"></app-offer-tile>
         </div>
         <ng-template #noOfferSelectedInfo>
           <div class="no-offer-selected-info">No offer is selected</div>

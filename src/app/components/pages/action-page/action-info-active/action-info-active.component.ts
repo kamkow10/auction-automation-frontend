@@ -15,6 +15,7 @@ export class ActionInfoActiveComponent implements OnInit {
   @Input() action: Action;
   public submitButtonDisabled = false;
   public paramsSetCorrectly = true;
+  public offerIdsWithCategoryError = [];
 
   constructor(private actionService: ActionService,
               private router: Router) {
@@ -34,6 +35,8 @@ export class ActionInfoActiveComponent implements OnInit {
     this.actionService.editAction(this.action.id, actionCreationData).subscribe(() => {
       this.ngOnInit();
       window.scroll({top: 0});
+    }, error => {
+      this.offerIdsWithCategoryError = error.error.wrongOffers;
     })
   }
 

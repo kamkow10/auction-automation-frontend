@@ -12,6 +12,7 @@ import {ShopService} from "../../services/shop.service";
 })
 export class OfferSelectPanelComponent implements OnInit {
   @Output() onOfferListChange = new EventEmitter<Offer[]>();
+  @Input() offerIdsWithCategoryError: string[] = [];
   @Input() selectedOffers: Offer[] = [];
   public foundedOffers: Offer[] = [];
   public showFoundedOffers = false;
@@ -50,7 +51,6 @@ export class OfferSelectPanelComponent implements OnInit {
     })
   }
 
-
   public onSelectOffer(offer: Offer): void {
     this.foundedOffers = this.foundedOffers.filter(foundedOffer => foundedOffer.externalId != offer.externalId);
     this.selectedOffers.push(offer);
@@ -60,6 +60,10 @@ export class OfferSelectPanelComponent implements OnInit {
   public onDeleteOffer(offer: Offer): void {
     this.selectedOffers = this.selectedOffers.filter(selectedOffer => selectedOffer.externalId != offer.externalId);
     this.onOfferListChange.emit(this.selectedOffers);
+  }
+
+  public isAnySelectedOfferWithCategoryError(): boolean {
+    return this.selectedOffers.some(offer => this.offerIdsWithCategoryError.includes(offer.externalId));
   }
 
   private getNotSelectedOffers(offers: Offer[]): Offer[] {

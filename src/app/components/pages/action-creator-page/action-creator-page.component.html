@@ -14,7 +14,7 @@
 </div>
 <h2>Choose offers</h2>
 <div class="section">
-  <app-offer-select-panel (onOfferListChange)="onOfferListSet($event)"></app-offer-select-panel>
+  <app-offer-select-panel (onOfferListChange)="onOfferListSet($event)" [offerIdsWithCategoryError]="offerIdsWithCategoryError"></app-offer-select-panel>
 </div>
 <div class="section" *ngIf="!!selectedActionTypeId">
   <h2>Set parameters</h2>
