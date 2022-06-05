@@ -1,5 +1,5 @@
 <div class="offer-tile {{tileStyle}}" [ngClass]="{'click-option': clickAvailabe}" (click)="onOfferClicked()">
-  <div class="offer-image"></div>
+  <div class="offer-image" [ngStyle]="{'background-image': 'url(' + offer.image + ')'}"></div>
   <div class="offer-info">
     <div class="top-info">
       <div class="title">{{offer.title}}</div>
@@ -7,7 +7,7 @@
       <div class="amount">Amount: {{offer.amount}}</div>
     </div>
     <div class="low-info">
-      <div class="shop-logo"></div>
+      <div class="shop-logo" [ngStyle]="{'background-image': 'url(' + offer.shop.logo + ')'}"></div>
       <div class="price">{{offer.price | number:'1.2'}}$</div>
     </div>
   </div>

@@ -28,7 +28,10 @@
 
   .offer-image {
     width: 40%;
-    background-color: orange;
+    background-size: auto 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 4px;
   }
 
   .offer-info {
@@ -61,9 +64,11 @@
       align-items: flex-end;
 
       .shop-logo {
-        background-color: #3dc84e;
-        width: 30%;
+        width: 100px;
         height: 20px;
+        background-size: auto 20px;
+        background-repeat: no-repeat;
+
       }
 
       .price {
