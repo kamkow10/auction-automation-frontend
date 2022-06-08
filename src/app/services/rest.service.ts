@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {
-  BACKEND_URL,
+  BACKEND_URL, CONFIRM_ALLEGRO_LOGIN_URL, CONFIRM_EBAY_LOGIN_URL,
   CREATE_ACTION_URL,
   DELETE_ACTION_URL,
   EDIT_ACTION_URL,
@@ -9,8 +9,8 @@ import {
   GET_ACTION_TYPE_CATEGORIES_URL,
   GET_ACTION_URL,
   GET_ACTIONS_URL,
-  GET_ALL_SHOPS_URL,
-  GET_CONNECTED_SHOPS_URL,
+  GET_ALL_SHOPS_URL, GET_ALLEGRO_LOGIN_URL,
+  GET_CONNECTED_SHOPS_URL, GET_EBAY_LOGIN_URL,
   GET_USER_DATA_URL,
   LOGIN_URL, LOGOUT_URL, REGISTER_URL
 } from "../consts/url.const";
@@ -80,5 +80,21 @@ export class RestService {
 
   public getActionTypeCategories(): Observable<{actionTypeCategories: ActionTypeCategory[]}> {
     return this.http.get<{actionTypeCategories: ActionTypeCategory[]}>(GET_ACTION_TYPE_CATEGORIES_URL);
+  }
+
+  public getAllegroLoginUrl(): Observable<{message: string}> {
+    return this.http.get<{message: string}>(GET_ALLEGRO_LOGIN_URL);
+  }
+
+  public confirmAllegroLogin(): Observable<{message: string}> {
+    return this.http.get<{message: string}>(CONFIRM_ALLEGRO_LOGIN_URL);
+  }
+
+  public getEbayLoginUrl(): Observable<{message: string}> {
+    return this.http.get<{message: string}>(GET_EBAY_LOGIN_URL);
+  }
+
+  public confirmEbayLogin(): Observable<{message: string}> {
+    return this.http.get<{message: string}>(CONFIRM_EBAY_LOGIN_URL);
   }
 }

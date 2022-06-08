@@ -22,4 +22,20 @@ export class ShopService {
   public findOffers(shopId: number, titleQuery: string): Observable<{offers: Offer[]}> {
     return this.restService.findOffers(shopId, titleQuery);
   }
+
+  public getAllegroLoginUrl(): Observable<{message: string}> {
+    return this.restService.getAllegroLoginUrl();
+  }
+
+  public confirmAllegroLogin(): Observable<{message: string}> {
+    return this.restService.confirmAllegroLogin();
+  }
+
+  public getEbayLoginUrl(): Observable<{message: string}> {
+    return this.restService.getEbayLoginUrl();
+  }
+
+  public confirmEbayLogin(): Observable<{message: string}> {
+    return this.restService.confirmEbayLogin();
+  }
 }

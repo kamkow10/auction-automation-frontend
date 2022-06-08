@@ -1,11 +1,11 @@
-<h1>{{shop.name}}</h1>
+<div class="shop-connect-logo" [ngStyle]="{'background-image': 'url(' + shop.logo + ')'}"></div>
 <div class="section">
   <h2>Connect shop</h2>
   <div class="info-text">
     Log in to the shops's website to connect our system with your shop account. Use below button to log in.
   </div>
   <div class="button-container">
-    <button class="btn">Log in</button>
+    <button class="btn" (click)="goToShopLoginPage()">Log in</button>
   </div>
 </div>
 <div class="section">
@@ -14,6 +14,6 @@
     After you correctly log in using the button above, please check connection to finalize the process.
   </div>
   <div class="button-container">
-    <button class="btn">Check connection</button>
+    <button class="btn" (click)="confirmShopLogin()">Check connection</button>
   </div>
 </div>
